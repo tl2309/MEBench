@@ -15,5 +15,5 @@ MEBench is a scalable  multi-document, multi-entity benchmark  designed to syste
 
 **Leaderboard**
 <div align="center">
-  <img src="assets/Leaderboard.jpg" width="50%" height="50%"/>
+  <img src="assets/leaderboard.jpg" width="50%" height="50%"/>
 </div>
