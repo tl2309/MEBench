@@ -10,7 +10,7 @@ import json
 # OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 class GPT(object):
 
-    def __init__(self, api_url: str = 'https://gpt-api.hkust-gz.edu.cn/v1/chat/completions'):
+    def __init__(self, api_url: str = 'Your_url'):
         self.api_url = api_url
 
     def __call__(self, prompt: str, model: str, **kwargs):
@@ -18,7 +18,7 @@ class GPT(object):
         # url = self.api_url
         headers = {
             "Content-Type": "application/json",
-            "Authorization": "9c77caa0882f46a19381a4796a641181556d0fe4e6c145bdb3717f5936207cae"
+            "Authorization": "Your Key"
         }
         data = {
             "model": model,
@@ -32,3 +32,4 @@ class GPT(object):
             return res["choices"][0]["message"]["content"]
         else:
             return 'None'
+
