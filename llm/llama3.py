@@ -45,7 +45,6 @@ register_template(
     stop_word='<|eot_id|>'
 )
 
-
 class Llama3(object):
 
     def __init__(self, adapter='', model="/root/EmoLLM/xtuner_config/merged_Llama3_8b_instruct", **kwargs):
@@ -65,7 +64,6 @@ class Llama3(object):
 
         self.template = template_dict[template_name]
 
-        # 若开启4bit推理能够节省很多显存，但效果可能下降
         load_in_4bit = False
 
         # load model
@@ -84,11 +82,10 @@ class Llama3(object):
         self.stop_token_id = self.stop_token_id[0]
 
     def run(self, prompt):
-        # 生成超参配置，可修改以取得更好的效果
-        max_new_tokens = 500  # 每次回复时，AI生成文本的最大长度
+        max_new_tokens = 500  
         top_p = 0.9
-        temperature = 0.6  # 越大越有创造性，越小越保守
-        repetition_penalty = 1.1  # 越大越能避免吐字重复
+        temperature = 0.6 
+        repetition_penalty = 1.1  
 
         history = []
         input_ids = build_prompt(self.tokenizer, self.template, prompt, copy.deepcopy(history), system=None).to(self.model.device)
@@ -101,11 +98,11 @@ class Llama3(object):
         response = self.tokenizer.decode(outputs)
         response = response.strip().replace(self.template.stop_word, "").strip()
 
-        # # 存储对话历史
+
         # history.append({"role": 'user', 'message': query})
         # history.append({"role": 'assistant', 'message': response})
         #
-        # # 当对话长度超过6轮时，清空最早的对话，可自行修改
+       
         # if len(history) > 12:
         #     history = history[:-12]
         return response.replace('\n', '').replace('<|start_header_id|>', '').replace('assistant<|end_header_id|>', '')
@@ -165,12 +162,11 @@ def build_prompt(tokenizer, template, query, history, system=None):
     history.append({"role": 'user', 'message': query})
     input_ids = []
 
-    # 添加系统信息
     if system_format is not None:
         if system is not None:
             system_text = system_format.format(content=system)
             input_ids = tokenizer.encode(system_text, add_special_tokens=False)
-    # 拼接历史对话
+
     for item in history:
         role, message = item['role'], item['message']
         if role == 'user':
@@ -182,3 +178,4 @@ def build_prompt(tokenizer, template, query, history, system=None):
     input_ids = torch.tensor([input_ids], dtype=torch.long)
 
     return input_ids
+
