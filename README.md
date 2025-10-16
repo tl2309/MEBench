@@ -17,3 +17,16 @@ MEBench is a scalable  multi-document, multi-entity benchmark  designed to syste
 <div align="center">
   <img src="assets/leaderboard.jpg" width="50%" height="50%"/>
 </div>
+
+**Citation**
+```
+@misc{lin2025mebench,
+      title={MEBench: Benchmarking Large Language Models for Cross-Document Multi-Entity Question Answering}, 
+      author={Teng Lin and Yuyu Luo and Honglin Zhang and Jicheng Zhang and Chunlin Liu and Kaishun Wu and Nan Tang},
+      year={2025},
+      eprint={2502.18993},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.18993}, 
+}
+```
