@@ -8,4 +8,7 @@ MEBench is a scalable  multi-document, multi-entity benchmark  designed to syste
   <img src="assets/mebench.png" width="65%" height="65%"/>
 </div>
 
-
+**Data Statistics**
+<div align="center">
+  <img src="assets/statistics.jpg" width="65%" height="65%"/>
+</div>
