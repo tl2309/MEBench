@@ -46,7 +46,6 @@ def gpt_eval(path, outfile='gpt_out.jsonl', qfile='MEBench_test.jsonl', model='G
             # table_n = data['topic'].replace(' ', '').replace('-', '')
             # qtype = data['type']
 
-            # 动态获取该题目的候选语料（仅记录标题，不用于回答）
             try:
                 topic = data.get('topic', '')
                 edge = data.get('edge', '')
@@ -83,7 +82,6 @@ def llama_eval(path, outfile='llama_out.jsonl', qfile='MEBench_test.jsonl', mode
             # Convert the JSON string to a Python dictionary
             data = json.loads(line)
 
-            # 动态获取该题目的候选语料（仅记录标题，不用于回答）
             try:
                 topic = data.get('topic', '')
                 edge = data.get('edge', '')
